@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MedHead - Manage Specialties</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>MedHead API Services - Manage Specialties</h2></div>
+    <div>
+        <a class="h3" th:href="@{/specialties/new}">Add new specialty</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+            <th>ID</th>
+                <th>Specialty</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="specialty : ${listSpecialties}">
+                    <tr>
+                        <td>[[${specialty.specID}]]</td>
+                        <td>[[${specialty.specName}]]</td>
+                        <td>[[${specialty.specEmail}]]</td>
+                        <td>
+                            <a class="h4 mr-3" th:href="@{'/specialties/edit' + ${specialty.specId}}">Edit</a>
+                            <a class="h4 mr-3" th:href="@{'/specialties/delete' + ${specialty.specEmail}}">Edit</a>
+                            <a class="h4">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
